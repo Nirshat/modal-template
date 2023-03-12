@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Template</title>
+    <style>
+        #main-container{
+            position: fixed;
+            height:0;
+            width:0;
+            top:0;
+            left:0;
+        }
+        #main-container.active{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color:#55555593;
+
+            position: fixed;
+            height:100vh;
+            width:100vw;
+            top:0;
+            left:0;
+        }
+
+
+
+        #modal{
+            font-size:0px;
+        }
+        #main-container.active > #modal{
+            padding:10px;
+            background:#f2f2f2;
+            border: 1px solid #eee;
+            width:80%;
+            font-size:17px;
+            transition:.3s;
+        }
+
+
+
+        #modal > .modal-header > button{
+            padding:0;
+            font-size:0px;
+            border:none;
+        }
+        #main-container.active > #modal > .modal-header > button{
+            background: #db1212;
+            border:1px solid #940e0e;
+            padding:2px 10px 2px 10px;
+            font-size:17px;
+            color:#fff;
+        }
+
+
+        hr{
+            color:#fff;
+        }
+
+
+        .modal-header, .modal-foot{
+            text-align: end;
+        }
+
+
+
+        @media screen and (min-width:1000px) {
+
+            #main-container.active > #modal{
+                width:60%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <button id="modal-btn">Click to Pop-up</button>
+    <div id="main-container">
+            <div id="modal">
+                <div class="modal-header">
+                    <i>Head</i>
+                    <button id="close-btn">x</button>
+                </div>
+                <hr>
+    
+                <div class="modal-body">
+                    <i>Body</i>
+                </div>
+                <hr>
+        
+                <div class="modal-foot">
+                    <i>Foot</i>
+                </div>
+            </div>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        document.getElementById('modal-btn').addEventListener('click', popUpModal);
+        document.getElementById('close-btn').addEventListener('click', popUpModal);
+        function popUpModal(){
+            document.getElementById('main-container').classList.toggle('active');
+        }
+    </script>
+
+    
+</body>
+</html>
